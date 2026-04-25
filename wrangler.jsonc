@@ -1,0 +1,7 @@
+{
+	"name": "itsseradev",
+	"compatibility_date": "2026-04-25", // Update to the day you deploy
+	"assets": {
+		"directory": "./dist",
+	}
+}
