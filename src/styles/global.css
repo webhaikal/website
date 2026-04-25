@@ -135,7 +135,8 @@
 
 	    100% {
 	        height: 600px;
-	        width: 70ch;
+			width: 80dvw;
+	        max-width: 70ch;
 	    }
 	}
 
