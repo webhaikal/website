@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "./../../layouts/MainLayout.astro";
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) =>
+		new Date(b.data.created).valueOf() - new Date(a.data.created).valueOf(),
+);
+---
+
+<MainLayout title="sera">
+	<div class="hidden" id="home">
+		<a href="/" class="flicker pagelabel" style="animation-delay: 0.2s"
+			>&lt; back</a
+		>
+
+		<div class="flicker" style="animation-delay: 0.4s">
+			<h1>blog</h1>
+		</div>
+
+		{
+			posts.length === 0 ? (
+				<div class="flicker" style="animation-delay: 0.6s">
+					<p>no available posts</p>
+				</div>
+			) : (
+				<div class="flicker">
+					{posts.map((post) => {
+						const date = new Date(post.data.created);
+						const dateStr = date
+							.toLocaleDateString("en-GB")
+							.replaceAll("/", "-");
+
+						return (
+							<>
+								<p
+									class="indent flicker gray"
+									style="animation-delay: 1s"
+								>
+									{dateStr}
+								</p>
+								<a
+									href={`/blog/${post.id}`}
+									class="flicker"
+									style="animation-delay: 1.1s"
+								>
+									{post.data.title}
+								</a>
+								<br />
+							</>
+						);
+					})}
+				</div>
+			)
+		}
+	</div>
+
+	<script>
+		setTimeout(function () {
+			document.getElementById("home").classList.remove("hidden");
+		}, 1300);
+
+		if (new URL(document.referrer).origin == new URL(document.URL).origin) {
+			document.getElementById("main").style.animationDuration = "0s";
+			document.getElementById("main").style.animationDelay = "0s";
+			document.getElementById("home").classList.remove("hidden");
+		}
+	</script>
+</MainLayout>

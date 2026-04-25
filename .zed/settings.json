@@ -1,0 +1,134 @@
+// Folder-specific settings
+//
+// For a full list of overridable settings, and general information on folder-specific settings,
+// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
+{
+	"lsp": {
+		"biome": {
+			"settings": {
+				"require_config_file": true
+			}
+		},
+		"vtsls": {
+			"settings": {
+				"typescript": { "tsserver": { "maxTsServerMemory": 16184 } },
+				"javascript": { "tsserver": { "maxTsServerMemory": 16184 } }
+			}
+		},
+		"tailwindcss-language-server": {
+			"settings": {
+				"classAttributes": [
+					"class",
+					"className",
+					"headerClassName",
+					"contentContainerClassName",
+					"columnWrapperClassName",
+					"endFillColorClassName",
+					"imageClassName",
+					"tintColorClassName",
+					"ios_backgroundColorClassName",
+					"thumbColorClassName",
+					"trackColorOnClassName",
+					"trackColorOffClassName",
+					"selectionColorClassName",
+					"cursorColorClassName",
+					"underlineColorAndroidClassName",
+					"placeholderTextColorClassName",
+					"selectionHandleColorClassName",
+					"colorsClassName",
+					"progressBackgroundColorClassName",
+					"titleColorClassName",
+					"underlayColorClassName",
+					"colorClassName",
+					"drawerBackgroundColorClassName",
+					"statusBarBackgroundColorClassName",
+					"backdropColorClassName",
+					"backgroundColorClassName",
+					"ListFooterComponentClassName",
+					"ListHeaderComponentClassName"
+				],
+				"classFunctions": ["useResolveClassNames", "cva", "cx"]
+			}
+		},
+		"discord_presence": {
+			"initialization_options": {
+				// Application ID for the rich presence (don't touch it unless you know what you're doing)
+				"application_id": "1263505205522337886",
+				// Base URL for all language icons
+				"base_icons_url": "https://raw.githubusercontent.com/xhyrom/zed-discord-presence/main/assets/icons/",
+
+				"state": "Working on {filename}",
+				"details": "In {workspace}",
+				// URL for the large image
+				"large_image": "{base_icons_url}/{language:lo}.png", // :lo lowercase the language name
+				"large_text": "{language:u}", // :u capitalizes the first letter
+				// URL for the small image
+				"small_image": "{base_icons_url}/zed.png",
+				"small_text": "Zed",
+
+				// Idle settings - when you're inactive
+				"idle": {
+					"timeout": 300, // Idle timeout in seconds (300 seconds = 5 minutes)
+
+					// Action to take when idle
+					// `change_activity` - changes the activity to idle with the following details
+					// `clear_activity` - clears the activity (hides it)
+					"action": "change_activity",
+
+					"state": "Idling",
+					"details": "In Zed",
+					"large_image": "{base_icons_url}/zed.png",
+					"large_text": "Zed",
+					"small_image": "{base_icons_url}/idle.png",
+					"small_text": "Idle"
+				},
+
+				"git_integration": true,
+
+				"rules": {
+					"mode": "whitelist", // Can also be "whitelist"
+					"paths": [
+						"/Users/haikalizz/Development/Web/itssera",
+						"/Users/haikalizz/Development/Apps/cereka"
+					]
+				}
+			}
+		}
+	},
+	"format_on_save": "on",
+	"languages": {
+		"JavaScript": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+				"source.action.useSortedProperties.biome": true
+			}
+		},
+		"TypeScript": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+				"source.action.useSortedProperties.biome": true
+			}
+		},
+		"TSX": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+				"source.action.useSortedProperties.biome": true
+			}
+		},
+		"JSON": { "formatter": { "language_server": { "name": "biome" } } },
+		"JSONC": { "formatter": { "language_server": { "name": "biome" } } },
+		"CSS": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.action.useSortedProperties.biome": true
+			}
+		}
+	}
+}

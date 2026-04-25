@@ -1,17 +1,37 @@
 ---
-
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="sera">
+	<div class="hidden" id="home">
+		<div class="flicker" style="animation-delay: 0.2s">
+			<h1>sera</h1>
+			<p class="pl-[1ch] text-[gray]">fullstack engineer</p>
+		</div>
+
+		<div class="flicker indent" style="animation-delay: 0.4s">
+			<a class="homelabel" href="about">> about</a>
+		</div>
+		<div class="flicker indent" style="animation-delay: 0.4s">
+			<a class="homelabel" href="hardware">> hardware</a>
+		</div>
+		<div class="flicker indent" style="animation-delay: 0.4s">
+			<a class="homelabel" href="socials">> socials</a>
+		</div>
+		<div class="flicker indent" style="animation-delay: 0.4s">
+			<a class="homelabel" href="blog">> blog</a>
+		</div>
+	</div>
+
+	<script>
+		setTimeout(function () {
+			document.getElementById("home").classList.remove("hidden");
+		}, 1300);
+
+		if (new URL(document.referrer).origin == new URL(document.URL).origin) {
+			document.getElementById("main").style.animationDuration = "0s";
+			document.getElementById("main").style.animationDelay = "0s";
+			document.getElementById("home").classList.remove("hidden");
+		}
+	</script>
+</MainLayout>

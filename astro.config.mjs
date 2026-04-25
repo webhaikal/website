@@ -1,5 +1,25 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
+
+import react from '@astrojs/react';
+
+import tailwindcss from '@tailwindcss/vite';
+
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  integrations: [react(), mdx()],
+  vite: {
+    plugins: [tailwindcss()]
+	},
+	fonts: [{
+		provider: fontProviders.fontsource(),
+		name: "Geist Mono",
+		cssVariable: "--font-geistmono"
+	},{
+		provider: fontProviders.fontsource(),
+		name: "Geist",
+		cssVariable: "--font-geist"
+	}]
+});

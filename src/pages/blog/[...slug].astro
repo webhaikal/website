@@ -1,0 +1,53 @@
+---
+export const prerender = true;
+
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import MainLayout from "../../layouts/BlogLayout.astro";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await render(post);
+
+const date = new Date(post.data.created);
+const dateStr = date.toLocaleDateString("en-GB").replaceAll("/", "-");
+const title = post.data.title;
+---
+
+<MainLayout title={"sera - " + { title }}>
+	<div class="hidden" id="home">
+		<a href="/blog" class="flicker pagelabel" style="animation-delay: 0.2s"
+			>&lt; back</a
+		>
+
+		<div class="flicker" style="animation-delay: 0.4s">
+			<h1>{post.data.title}</h1>
+			<p class="text-[gray] text-sm">{dateStr}</p>
+		</div>
+
+		<div class="flicker overflow-auto max-h-[450px]">
+			<div class="prose prose-invert">
+				<Content class="flicker" style="animation-delay: 1.0s" />
+			</div>
+		</div>
+	</div>
+
+	<script>
+		setTimeout(function () {
+			document.getElementById("home").classList.remove("hidden");
+		}, 1300);
+
+		if (new URL(document.referrer).origin == new URL(document.URL).origin) {
+			document.getElementById("main").style.animationDuration = "0s";
+			document.getElementById("main").style.animationDelay = "0s";
+			document.getElementById("home").classList.remove("hidden");
+		}
+	</script>
+</MainLayout>

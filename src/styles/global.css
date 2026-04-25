@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@layer base {
+	html, body {
+		@apply bg-black text-white overflow-x-hidden overflow-hidden m-0 p-0;
+		font-family: var(--font-geistmono)
+	}
+
+	.center {
+		@apply fixed top-1/2 left-1/2;
+		transform: translate(-50%, -50%);
+	}
+
+	.box {
+		@apply w-0 h-0 border-[3px];
+	}
+
+	.doubleindent {
+	    padding-left: 2ch;
+	}
+
+	.pagelabel {
+	    position: fixed;
+	    z-index: 100;
+	    right: 0;
+	    top: 0;
+	}
+
+	.pixel {
+	    image-rendering: optimizeSpeed;
+	    image-rendering: -moz-crisp-edges;
+	    image-rendering: -o-crisp-edges;
+	    image-rendering: -webkit-optimize-contrast;
+	    image-rendering: pixelated;
+	    image-rendering: optimize-contrast;
+	    -ms-interpolation-mode: nearest-neighbor;
+	}
+
+	.badge-grid img {
+	    width: 88px;
+	    height: 31px;
+	}
+
+	.imagediv {
+	    gap: 25px;
+	    color: #585858;
+	    text-align: center;
+	    justify-content: space-evenly;
+	    display: flex;
+	    margin: 0 !important;
+	}
+
+	.gray {
+	    color: gray;
+	}
+
+	.systemdetail {
+	    float: right;
+	    padding-right: 1ch;
+	}
+
+	:not(.prose) h1 {
+	    font-size: 2.6em;
+		line-height: 1em;
+	}
+
+	:not(.prose) h1,
+	:not(.prose) h2 {
+	    margin-bottom: 0px;
+	}
+
+	:not(.prose) p {
+	    margin: 0px;
+	}
+
+	a {
+	    text-decoration: underline;
+	    color: white;
+	    transition: 0.5s;
+	}
+
+	label {
+	    cursor: pointer;
+	}
+
+	.homelabel {
+	    font-size: 1.5em;
+	    text-decoration: underline;
+	}
+
+	.spread {
+    	animation-name: spread;
+    	animation-fill-mode: forwards;
+    	animation-duration: 1s;
+    	animation-delay: 0.4s;
+    	animation-timing-function: ease;
+	}
+
+	@keyframes spread {
+	    0% {
+	        height: 0px;
+	        width: 0px;
+	    }
+
+	    50% {
+	        height: 0px;
+	        width: 400px;
+	    }
+
+	    100% {
+	        height: 600px;
+	        width: 400px;
+	    }
+	}
+
+	.spread-large {
+    	animation-name: spread-large;
+    	animation-fill-mode: forwards;
+    	animation-duration: 1s;
+    	animation-delay: 0.4s;
+    	animation-timing-function: ease;
+	}
+
+	@keyframes spread-large {
+	    0% {
+	        height: 0px;
+	        width: 0px;
+	    }
+
+	    50% {
+	        height: 0px;
+	        width: 400px;
+	    }
+
+	    100% {
+	        height: 600px;
+	        width: 70ch;
+	    }
+	}
+
+	.flicker {
+	    opacity: 0%;
+	    margin: 25px;
+	    animation-name: flicker;
+	    animation-fill-mode: forwards;
+	    animation-duration: 0.2s;
+	}
+
+	@keyframes flicker {
+	    0% {
+	        opacity: 0%;
+	    }
+
+	    1% {
+	        opacity: 100%;
+	    }
+
+	    19% {
+	        opacity: 100%;
+	    }
+
+	    20% {
+	        opacity: 0%;
+	    }
+
+	    99% {
+	        opacity: 0%;
+	    }
+
+	    100% {
+	        opacity: 100%;
+	    }
+	}
+}
